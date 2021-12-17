@@ -1,0 +1,64 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * @var $block \Magento\Theme\Block\Html\Title
+ */
+
+    //$helper = $this->helper('Newthink\CustomProductTab\Helper\Data');
+    //$objectManager = $helperObjManager->helperFunction();
+       
+
+    // $product = \Magento\Framework\App\ObjectManager::getInstance()
+    // ->get(\Magento\Framework\Registry::class)
+    // ->registry('current_product');
+    // $id = $product->getId();
+  
+    // $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+    // $products = $objectManager->get('Magento\Catalog\Model\Product')->load($id);
+    // //echo $products->getFixedPrice();
+
+    // //$fromDate =  $products->getFromDate();
+    // $from_date = str_replace('/', '-', $products->getFromDate());  
+    // $myNewDate = DateTime::createFromFormat('m-d-Y', $from_date); 
+    // $startingDate = $myNewDate->format('Y-m-d');  
+
+    // //$to_date = $products->getToDate();
+    // $remaining_date = str_replace('/','-', $products->getToDate()); 
+    // $myDateTime = DateTime::createFromFormat('m-d-Y', $remaining_date);
+    // $endingDate = $myDateTime->format('Y-m-d');
+    // ($endingDate); 
+    
+    // $sdate = new DateTime($startingDate);
+    // $edate = new DateTime($endingDate);
+    // $interval = $edate->diff($sdate);     
+
+
+
+$cssClass = $block->getCssClass() ? ' ' . $block->getCssClass() : '';
+$title = '';
+if (trim($block->getPageHeading())) {
+    $title = '<span class="base" data-ui-id="page-title-wrapper" ' .  $block->getAddBaseAttribute() . '>'
+        . $block->escapeHtml($block->getPageHeading()) . '</span>';
+}
+?>
+<?php if ($title): ?>
+<div class="page-title-wrapper<?= /* @escapeNotVerified */ $cssClass ?>">
+    <h1 class="page-title"
+        <?php if ($block->getId()): ?> id="<?= /* @escapeNotVerified */ $block->getId() ?>" <?php endif; ?>
+        <?php if ($block->getAddBaseAttributeAria()): ?>
+            aria-labelledby="<?= /* @escapeNotVerified */ $block->getAddBaseAttributeAria() ?>"
+        <?php endif; ?>>
+        <?= /* @escapeNotVerified */ $title ?>
+        
+    </h1>
+    <?= $block->getChildHtml() ?>
+</div>
+
+<div><h3 style="color:green;"><?="Special Offer, Only ". $helper->getDateDifference() . " days left !";?></h3></div>
+<?php endif; ?>

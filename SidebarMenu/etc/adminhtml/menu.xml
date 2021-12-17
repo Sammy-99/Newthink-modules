@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Newthink_SidebarMenu::sidebarmenu" title="Details" module="Newthink_SidebarMenu" sortOrder="9999" resource="Newthink_SidebarMenu::sidebarmenu"/>
+
+        <add id="Newthink_SidebarMenu::details" title="Manage Customer Details" module="Newthink_SidebarMenu" sortOrder="10" action="newthink/details/index" resource="Newthink_SidebarMenu::details" parent="Newthink_SidebarMenu::sidebarmenu"/>
+
+    </menu>
+</config>

@@ -1,0 +1,36 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php /* @var $block \Magento\Catalog\Block\Product\View\AbstractView */?>
+<?php $_product = $block->getProduct() ?>
+
+<!-- my custom code to show some text on product view page through file overriding -->
+
+<?php $helper = $this->helper('Newthink\ProductQuantity\Helper\StockQuantity'); 
+      $product_quantity = $helper->getStockProductQuantity();
+?>
+<?php if($product_quantity['qty'] <= 5 && $product_quantity['qty'] > 0 && $product_quantity['is_in_stock'] == 1) : ?>
+
+<div style="color:red;"> Only <?=$product_quantity['qty'];?> item left ! Hurry up!</div>
+<?php endif; ?>
+
+<!-- custom code end -->
+
+
+<?php if ($block->displayProductStockStatus()): ?>
+    <?php if ($_product->isAvailable()): ?>
+        <div class="stock available" title="<?= /* @escapeNotVerified */ __('Availability') ?>">
+            <span><?= /* @escapeNotVerified */ __('In stock') ?></span>
+        </div>
+    <?php else: ?>
+        <div class="stock unavailable" title="<?= /* @escapeNotVerified */ __('Availability') ?>">
+            <span><?= /* @escapeNotVerified */ __('Out of stock') ?></span>
+        </div>
+    <?php endif; ?>
+<?php endif; ?>

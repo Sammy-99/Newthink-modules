@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <!-- <table name="customer_entity">
+        <column xsi:type="varchar" name="username" nullable="false"
+                length="200" comment="Username"/> -->
+        <!-- <constraint xsi:type="foreign" referenceId="CUSTOMER_ENTITY_REFERRED_BY_CUSTOMER_ENTITY_ENTITY_ID" table="customer_entity"
+                    column="username" referenceTable="customer_entity" referenceColumn="entity_id" onDelete="CASCADE"/> -->
+    <!-- </table> -->
+</schema>

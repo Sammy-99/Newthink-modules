@@ -1,0 +1,15 @@
+{
+    "newthink_product_custom_attribute": {
+        "column": {
+            "entity_id": true,
+            "fixed_price": true,
+            "from_date": true,
+            "to_date": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

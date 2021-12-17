@@ -1,0 +1,10 @@
+{
+    "customer_entity": {
+        "column": {
+            "username": true
+        },
+        "constraint": {
+            "CUSTOMER_ENTITY_USERNAME_CUSTOMER_ENTITY_ENTITY_ID": true
+        }
+    }
+}
