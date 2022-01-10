@@ -4,7 +4,7 @@
         <arguments>
             <argument name="collections" xsi:type="array">
                 <item name="newthink_sidebarmenu_details_listing_data_source" xsi:type="string">Newthink\SidebarMenu\Model\ResourceModel\Contact\Grid\Collection</item>
-            </argument>
+            </argument> 
         </arguments>
     </type>
     <virtualType name="Newthink\SidebarMenu\Model\ResourceModel\Contact\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">

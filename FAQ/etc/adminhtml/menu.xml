@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Newthink_FAQ::faq" title="FAQ" module="Newthink_FAQ" sortOrder="99999" resource="Newthink_FAQ::faq"/>
+
+        <add id="Newthink_FAQ::faqgroup" title="Manage FAQGroup" module="Newthink_FAQ" sortOrder="10" action="newthink/group/index" resource="Newthink_FAQ::faqgroup" parent="Newthink_FAQ::faq"/>
+
+        <add id="Newthink_FAQ::managefaq" title="Manage FAQ" module="Newthink_FAQ" sortOrder="20" action="newthink/manage/index" resource="Newthink_FAQ::managefaq" parent="Newthink_FAQ::faq"/>
+
+        <add id="Mageplaza_HelloWorld::faq_configuration" title="Configuration" module="Newthink_FAQ" sortOrder="30" parent="Newthink_FAQ::faq" action="adminhtml/system_config/edit/section/helloworld" resource="Newthink_FAQ::faq_configuration"/>
+
+    </menu>
+</config>

@@ -1,0 +1,17 @@
+{
+    "newthink_manage_faq_questions": {
+        "column": {
+            "id": true,
+            "title": true,
+            "group_name": true,
+            "sort_order": true,
+            "status": true,
+            "created_at": true,
+            "updated_at": true,
+            "content": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

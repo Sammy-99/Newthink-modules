@@ -2,7 +2,7 @@
 
 namespace Newthink\DescriptionBox\Observer;
 
-use Magento\Checkout\Model\Session;
+use Magento\Checkout\Model\Session; 
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
 use Magento\Quote\Model\QuoteRepository;

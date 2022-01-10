@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <!-- Changing value for both Controllers  -->
+   <!-- <type name="Newthink\Di\Model\Custom">
+        <arguments>
+                <argument name="namespace" xsi:type="string">changed</argument>
+        </arguments>
+    </type> -->
+
+<!-- return array -->
+    <!-- <type name="Newthink\Di\Model\Custom">
+        <arguments>
+            <argument name="fruits" xsi:type="array">
+                <item name="apple" xsi:type="string">Apple</item>
+                <item name="orange" xsi:type="string">Orange</item>
+            </argument>
+        </arguments>
+    </type> -->
+
+<!-- virtual type  -->
+     <virtualType name="CustomVirtual" type="Newthink\Di\Model\Custom">
+        <arguments>
+            <argument name="namespace" xsi:type="string">changed</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Newthink\Di\Controller\Example\Index">
+        <arguments>
+            <argument name="custom" xsi:type="object">CustomVirtual</argument>
+        </arguments>
+    </type>
+
+ 
+</config>

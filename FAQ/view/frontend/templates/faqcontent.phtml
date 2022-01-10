@@ -1,0 +1,142 @@
+<style>
+    .group-name{
+        color:#1e90ff;
+        font-size:25px;
+        margin-left:20px;
+        border:1px solid #778899;
+        border-radius:50px;
+        padding:10px 20px;
+        cursor: pointer;
+        
+    }
+    .group-name:hover{
+        background-color:#dcdcdc;
+        color:	#1e90ff;
+    }
+    .group-name-as-tabs{
+        margin-left: 130px;
+    }
+
+    .group-heading{
+        font-size:18px;
+        color:#1e90ff;
+        font-weight: bold;
+        border-bottom:1px solid #dcdcdc;
+    }
+    .single-query-group{
+        margin:25px 0px;
+       
+    }
+    .faq-query{
+        border:1px solid #808080;
+        background-color:#dcdcdc;
+        margin:9px 0 0 0;
+        padding:10px;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+    .faq-query:hover{
+        background-color:#1e90ff;
+        cursor:pointer;
+        color:white;
+    }
+    .query-content{
+        border:1px solid #808080;
+        padding:10px;
+        border-top:none;
+        transform:translateY;
+        transition:transform 3s;
+    }
+    a:hover{
+        text-decoration: none;
+    }
+    
+
+</style>
+
+<h1>FAQ</h1>
+<div class="group-name-as-tabs">
+    <tr>
+        <?php
+        $groupName = $block->getGroupName();
+        foreach($groupName as $tab){ ?>
+            <td>
+                <a href="#tab<?=$tab->getId();?>" class="anchor">
+                    <span class="group-name">
+                        <?=$tab->getGroupName();?>
+                    </span>
+                </a>     
+            </td>
+        <?php } ?>
+    </tr>
+</div><br><br><br>
+
+<div>
+    <?php $contents = $block->getFaqContent();
+            foreach($groupName as $heading){ ?>
+            <div >
+                <tr>
+                    <div class="group-heading" id="tab<?=$heading->getId();?>">
+                        <?=strtoupper($heading->getGroupName());?>
+                    </div>
+                    <div class="single-query-group">
+                        <?php 
+                            foreach($contents as $content){ 
+                                if($heading->getGroupName() == $content->getGroupName()){ ?>
+
+                                <div class="faq-query" 
+                                        id="query<?=$content->getId()?>"
+                                    onclick="showContent(
+                                                'content<?=$content->getId()?>', 
+                                                'query<?=$content->getId()?>')" >
+                                    <p><?=$content->getTitle();?></p>
+                                </div>
+                                <div class="query-content" 
+                                        id="content<?=$content->getId()?>"
+                                    style="display:none">
+                                    <p><?=$content->getContent();?></p>
+                                </div>
+                        <?php
+                                }
+                            } 
+                        ?>
+                    </div>
+                </tr>
+            </div>        
+    <?php
+        }
+    ?>
+</div>
+
+<script>
+function showContent(contentId, queryId) {
+
+    var content = document.getElementById(contentId);
+    var y = document.getElementById(queryId);
+
+    if (content.style.display === "none") {
+        content.style.display = "block";
+    } else {
+        content.style.display = "none";
+    }
+}
+</script>
+
+
+
+<script>
+// require(['jquery'],function($){
+    
+//     function showContent(id,class){
+//         alert("ok");
+//     }
+//     $(document).ready(function(e){
+//         alert(1);
+//         
+//     })
+//     // function showContent(id,class){
+//     //     alert("ok");
+//     // }
+// });
+</script>
+

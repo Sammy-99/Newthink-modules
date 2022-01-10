@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+   <table name="newthink_manage_faq_questions" resource="default" engine="innodb" comment="Custom Import Export">
+      <column xsi:type="smallint" name="id" padding="6" unsigned="false" nullable="false" identity="true" comment="ID" />
+      <column xsi:type="varchar" name="title" nullable="false" length="200" comment="title questions" />
+      <column xsi:type="varchar" name="group_name" nullable="false" length="222" comment="category id" />
+      <column xsi:type="varchar" name="sort_order" nullable="false" length="222" comment="sort order" />
+      <column xsi:type="varchar" name="status" nullable="false" length="222" comment="status" />
+      <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Created At"/>
+      <column xsi:type="timestamp" name="updated_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Updated At"/>
+      <column xsi:type="text" name="content" nullable="true" comment="Content or Answers" />
+      <constraint xsi:type="primary" referenceId="PRIMARY">
+         <column name="id" />
+      </constraint> 
+   </table>
+</schema>

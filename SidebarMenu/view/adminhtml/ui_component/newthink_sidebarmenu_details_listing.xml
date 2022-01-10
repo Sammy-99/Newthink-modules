@@ -40,7 +40,7 @@
         </argument>
         <bookmark name="bookmarks"/>
         <columnsControls name="columns_controls"/>
-        <filterSearch name="fulltext"/>
+        <!-- <filterSearch name="fulltext"/> -->
         <filters name="listing_filters" />
         <massaction name="listing_massaction">
             <argument name="data" xsi:type="array">

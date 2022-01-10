@@ -5,3 +5,5 @@ echo $this->getLayout()
 ->setBlockId('CustomStaticBlock')
 ->toHtml();
 ?>
+<h1><?=$block->getCustom()?></h1>
+<h1><?=$block->getHelperData()?></h1>

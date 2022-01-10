@@ -1,0 +1,95 @@
+<?php
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_Test
+ * @author    Webkul
+ * @copyright Copyright (c) 2010-2018 Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+ 
+namespace Webkul\Test\Controller\Order;
+ 
+class CreateShipment extends Magento\Framework\App\Action\Action
+{
+   /**
+     * @var \Magento\Sales\Api\OrderRepositoryInterface
+     */
+    protected $_orderRepository;
+
+    /**
+     * @var \Magento\Sales\Model\Convert\Order
+     */
+    protected $_convertOrder;
+
+    /**
+     * @var \Magento\Shipping\Model\ShipmentNotifier
+     */
+    protected $_shipmentNotifier;
+
+    /**
+     * @param Context                                     $context
+     * @param \Magento\Sales\Api\OrderRepositoryInterface $orderRepository
+     * @param \Magento\Sales\Model\Convert\Order          $convertOrder
+     * @param \Magento\Shipping\Model\ShipmentNotifier    $shipmentNotifier
+     */
+    public function __construct(
+        Context $context,
+        \Magento\Sales\Api\OrderRepositoryInterface $orderRepository,
+        \Magento\Sales\Model\Convert\Order $convertOrder,
+        \Magento\Shipping\Model\ShipmentNotifier $shipmentNotifier
+    ) {
+        $this->_orderRepository = $orderRepository;
+        $this->_convertOrder = $convertOrder;
+        $this->_shipmentNotifier = $shipmentNotifier;
+        parent::__construct($context);
+    }
+
+    /**
+     * Test Order Create Shipment Controller
+     */
+    public function execute()
+    {
+        $orderId = 1;
+        $order = $this->_orderRepository->get($orderId);
+
+        // to check order can ship or not
+        if (!$order->canShip()) {
+            throw new \Magento\Framework\Exception\LocalizedException(
+            __("You can't create the Shipment of this order.") );
+        }
+
+        $orderShipment = $this->_convertOrder->toShipment($order);
+
+        foreach ($order->getAllItems() AS $orderItem) {
+
+         // Check virtual item and item Quantity
+         if (!$orderItem->getQtyToShip() || $orderItem->getIsVirtual()) {
+            continue;
+         }
+
+         $qty = $orderItem->getQtyToShip();
+         $shipmentItem = $convertOrder->itemToShipmentItem($orderItem)->setQty($qty);
+
+         $orderShipment->addItem($shipmentItem);
+        }
+
+        $orderShipment->register();
+        $orderShipment->getOrder()->setIsInProcess(true);
+        try {
+
+            // Save created Order Shipment
+            $orderShipment->save();
+            $orderShipment->getOrder()->save();
+
+            // Send Shipment Email
+            $this->_shipmentNotifier->notify($orderShipment);
+            $orderShipment->save();
+        } catch (\Exception $e) {
+            throw new \Magento\Framework\Exception\LocalizedException(
+            __($e->getMessage())
+            );
+        }
+    }
+}
