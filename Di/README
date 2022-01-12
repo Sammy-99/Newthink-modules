@@ -1,0 +1,12 @@
+In Newthink_Di module we learn & test the Dependency Injection.
+Using di.xml file and using constructor.
+
+In di.xml file -
+	->we discuss about <type> and <vertual type> node i.e How these two di works.
+	->we discuss about Preferences concepts and do practicals.
+	->we discuss about the Plugins, how the works and where we use different methods of plugins?
+		->before, after & around method.
+		
+In constructor method ->
+	->construct dependency injection
+	->method dependency injection.  

@@ -19,7 +19,7 @@
     </type> -->
 
 <!-- virtual type  -->
-     <virtualType name="CustomVirtual" type="Newthink\Di\Model\Custom">
+     <!-- <virtualType name="CustomVirtual" type="Newthink\Di\Model\Custom">
         <arguments>
             <argument name="namespace" xsi:type="string">changed</argument>
         </arguments>
@@ -29,7 +29,24 @@
         <arguments>
             <argument name="custom" xsi:type="object">CustomVirtual</argument>
         </arguments>
-    </type>
+    </type> -->
 
+<!-- override controller ,block and model using Preferences-->
+
+<preference for="Magento\Customer\Controller\Account\Index" type="Newthink\Di\Controller\Rewrite\Product\Index" />
+
+<preference for="Magento\Customer\Block\Account\Dashboard\Address" type="Newthink\Di\Block\Rewrite\Account\Dashboard\Address" />
+
+<preference for="Magento\Customer\Model\Address\Config" type="Newthink\Di\Model\Rewrite\Address\Config" />
+
+<!-- Plugins Before, after And around -->
+    <!-- <type name="Magento\Catalog\Model\Product">
+        <plugin name="update_product_before_save" type="Newthink\Di\Plugin\UpdateProductPlugin" sortOrder="1" disabled="false"/>
+    </type> -->
+
+    <type name="Newthink\Di\Controller\Example\Index">
+        <plugin name="update_titles_before_after_save" type="Newthink\Di\Plugin\Testing" sortOrder="10" disabled="false"/>
+        <plugin name="update_titles_classtwo_before_after_save" type="Newthink\Di\Plugin\TestingTwo" sortOrder="20" disabled="false"/>
+    </type>
  
 </config>
