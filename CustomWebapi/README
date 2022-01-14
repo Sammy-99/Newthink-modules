@@ -1,0 +1,14 @@
+Here we create this module 'Bluethink_CustomWebapi' just to test the custom webapi.
+
+we created interfaces inside the 'Api' folder however model have classes to implement the interfaces.
+
+In the model directory we created a fake model named 'TestApi.php' who have static data just to test api It is not connected any database table. I have just defined some getter and setter methods.
+
+Api url is '/V1/testapi/custom/me'.
+	->when we hit this api url with base url like- '<HTTP verb> http://<host>/rest/<scope>/<endpoint>'
+	
+	<HTTP verb> : may be GET, POST, PUT, DELETE etc.
+	<host> : may be your hostname or IP address.
+	<scope> : specifies which store the call affects.
+	<endpoint> : the full URI (Uniform Resource Identifier) to the endpoint. these value always start with 'V1'.
+			example - /v1/order/orderId 

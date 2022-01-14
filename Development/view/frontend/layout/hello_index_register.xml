@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+     <body>
+         <referenceContainer name="content">
+             <block class="Magento\Newsletter\Block\Subscribe" name="static.newsletter" template="Magento_Newsletter::subscribe.phtml" />
+         </referenceContainer>
+     </body>
+</page>
+
+
+
+<!-- block class="Magento\Newsletter\Block\Subscribe" name="static.newsletter" template="Magento_Newsletter::subscribe.phtml" -->
+
+<!-- block class="Bluethink\Dev\Block\Register" name="hello_index_register" template="Bluethink_Dev::register.phtml" -->

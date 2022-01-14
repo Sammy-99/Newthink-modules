@@ -1,0 +1,73 @@
+<?php 
+/**
+* @var $block \Bluethink\Development\Block\Adminhtml\Order\View\Tab\Custom
+*/
+$orderId=$block->getVal();
+
+?>
+<div id="custom-model-popup">
+	<dl>
+		<dt>Hello Bluethink</dt>
+		<dd>  Hello Guys </dd>
+		<dt>E-commerce Project </dt>
+		<dd>We are working E commerce project using magento framework and also 
+			laravel 
+        .</dd>
+	</dl>
+	<form action="" method="post">
+		<div>
+			<label for="mail">E-mail:</label>
+			<input type="email" id="email" name="email">
+		</div>
+    </form>
+</div>
+
+<script>
+
+	require([
+		"jquery",
+		"Magento_Ui/js/modal/modal"
+	], function($, modal){
+	
+       
+	    var options = {
+			type: 'popup',
+			responsive: true,
+			innerScroll: true,
+			title: "Hello Bluethink", //write your popup title 
+
+			buttons: [{
+				text: $.mage.__('Submit'),
+				class: 'button',
+				click: function () {
+					var email = document.getElementById('email').value;
+             
+				jQuery.ajax({
+                url: 'hello/index/result',
+                type: 'POST',
+                data:{email:email},
+                showLoader: true,
+                success: function(response)
+                {
+                  console.log('dev');
+                 }  
+               
+            
+
+                });
+          
+				
+				}
+			}]
+		}
+		var popupdata = $('<div />').append($('#custom-model-popup'));
+		modal(options, popupdata);
+		popupdata.modal('openModal');
+	});
+</script>
+
+
+
+
+
+	<!--  var formdata= document.getElementsById('email').val(); -->

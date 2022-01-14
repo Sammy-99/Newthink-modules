@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+<head>
+    <css src="Bluethink_CustomSection::css/preloader.css"/>
+</head>
+<body>
+
+    <referenceContainer name="after.content.start">
+            <block class="Magento\Framework\View\Element\Template" name="container.preloader" as="preloader" template="Bluethink_CustomSection::modal_overlay.phtml"/>
+    </referenceContainer>
+
+    <referenceContainer name="content">
+        <block class="Bluethink\CustomSection\Block\ModalOverlay"
+                template="modal_overlay.phtml"
+                name="modalOverlay"
+                as="modalOverlay"/>
+    </referenceContainer>
+</body>
+</page>

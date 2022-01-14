@@ -1,0 +1,104 @@
+<div id="custom-model-popup">
+	<dl>
+		<dt>Sign Up for Our Newsletter:</dt>
+		<div class="content">
+        <form id="contact-form" class="form subscribe" novalidate="novalidate" action="" method="post" id="newsletter-validate-detail">
+            <div class="field newsletter">
+                <div class="control">
+                    <label for="newsletter">
+                        
+                        <input name="email" type="email"  placeholder="Enter your email address" data-validate="{required:true, 'validate-email':true}">
+                    </label>
+                </div>
+            </div>
+            <div class="actions" style="margin-top: 3rem"> 
+                <button class="action subscribe primary sr-only" title="Subscribe" type="submit" id="submit" aria-label="Subscribe">
+                    <span>Subscribe</span>
+                </button>
+            </div>
+        </form>
+		<div class="loader-wrapper">
+		<div class="wrap">
+			<div class="loading">
+				<div class="bounceball"></div>
+				<div class="text"><?= __('Now Loading') ?></div>
+			</div>
+		</div>
+		</div>
+
+		<div id="alert"></div>
+	</div>
+	</dl>
+	
+
+</div>
+
+<?php
+/**
+ * For Modal............
+ */
+if ($block->checkSubscriber()) {
+	?>
+	<script>
+		document.getElementById("custom-model-popup").style.display = 'none';
+	</script>
+	<?php
+	echo 'You have been subscribed newsletter already.';
+	
+} else {
+	?>
+	<script>
+		require([
+		"jquery",
+		"Magento_Ui/js/modal/modal"
+	], function($, modal){
+		var options = {
+			type: 'popup',
+			responsive: true,
+			innerScroll: true,
+			title: "", //write your popup title 
+			buttons: false
+		};
+		var popupdata = $('<div />').append($('#custom-model-popup'));
+		modal(options, popupdata);
+		popupdata.modal('openModal');
+	});
+	</script>
+	<?php
+}
+/**
+ * Modal end...........
+ */
+
+ /**
+  * Email Subscriber Code Start.......
+  */
+
+?>
+<script>
+// ajax to save data in db
+require(["jquery"],function($) {
+	jQuery(document).on('click','#submit',function() {
+		$( "div.loader-wrapper" ).show();	
+			event.preventDefault();
+			var dataForm = $("form").serialize();
+				jQuery.ajax({
+						url: '<?php echo $block->getUrl('custom/index/subscrib') ?>',
+						showLoader:false,
+						data: dataForm,
+						type: "POST"
+					}).done(function (data) {
+					$('.loader-wrapper').hide();
+					console.log(data);                         
+					// console.log(data.message);                         
+					jQuery('#alert').html(data.message);
+					jQuery('#alert').css({'color':'#333333', 'background-color': '#fffbbb', 'padding': '1.8rem 4rem 1.8rem 5.5rem', 'margin-top':'2rem'});
+					document.getElementById("contact-form").reset();
+					return true;
+					});
+				
+			});
+	});
+</script>
+
+

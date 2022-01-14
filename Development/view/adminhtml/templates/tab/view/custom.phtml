@@ -1,0 +1,104 @@
+ <?php
+/**
+* @var $block \Bluethink\Development\Block\Adminhtml\Order\View\Tab\Custom
+*/
+$orderId=$block->getOrderId();
+
+   
+?>
+<div class="fieldset-wrapper order-information">
+    <div class="fieldset-wrapper-title">
+        <span class="title"><?php /* @escapeNotVerified */
+            echo __('Information for new Order tab') ?></span>
+    </div>
+   <form action="" id="dataform" name="dataform" method="post">
+    
+    <table class="admin__table-secondary">
+        <tbody>
+        <?php echo $block->getChildHtml(); ?>
+        <tr>
+            <th><?php /* @escapeNotVerified */
+                echo __('Order ID:') ?></th>
+            <td><input name="order_increment_id" id="order_increment_id" value="<?php echo $block->getOrderIncrementId(); ?>" 
+                type="text"></td>
+        </tr>
+        <tr>
+            <th><?php /* @escapeNotVerified */
+                echo __('Last History:') ?></th>
+            <td><?php echo __('History of order') ?></td>
+        </tr>
+         <tr>
+            <th><?php /* @escapeNotVerified */
+                echo __('Entity ID:') ?></th>
+            <td><input type="text" value="<?php echo $block->getOrderId(); ?>" name="order_id" id="order_id"></td>
+        </tr>
+        <tr>
+            <th><?php /* @escapeNotVerified */
+                echo __('Order State:') ?></th>
+             <td><input name="state_status" id="state_status" value="<?php echo $block->getOrderStatus($orderId);?>" 
+                type="text">
+
+               
+            </td>
+        </tr>
+        <tr>
+            <th><?php /* @escapeNotVerified */
+                echo __('Order Status:') ?></th>
+             <td> <input name="current_status" id="current_status" value="<?php echo $block->getOrderState($orderId);?>" class="current_status" type="text">
+                   
+             </td>
+        </tr>
+        <tr>
+            <th><?php /* @escapeNotVerified */
+                echo __('Order Status:') ?></th>
+             <td><select name="order_status" id="order_status">
+                  <?php $options = $block->getOrderStatusOptions();
+                    
+                    // echo "<pre>";
+                    // print_r($options);
+                    // echo "</pre>";
+              
+                 foreach($options as $key)
+                 {
+                 ?>
+                      <option value="<?php echo $key["label"];?>"><?php echo $key['value'];?></option>    
+                 <?php 
+                  }
+                 ?> 
+               </td></select>
+        </tr>
+
+        </tbody>
+    </table>
+   <button id="submit" type="submit" title="<?php /* @escapeNotVerified */ echo __('Submit') ?>" class="action submit primary">
+                <span><?php /* @escapeNotVerified */ echo __('Submit') ?></span>
+            </button>
+        </form>
+</div> 
+
+ <script type="text/javascript">
+   
+      require(["jquery"],function($) {
+            $(document).on('click','#submit',function() {
+              var dataForm = $('#dataform');
+            if (dataForm.valid()){
+            event.preventDefault();
+                var param = dataForm.serialize();
+                
+                    $.ajax({
+                        showLoader: true,
+                        url: "<?php echo $block->getUrl("dev/order/save")?>",
+                        data: param,
+                        type: "POST",
+                        cache: false,
+                        success: function(data) {
+                                  alert("Save");
+                                  location.reload();
+                                   }
+                    });
+                }
+            });
+            });
+    </script> 
+<!--                                  location.reload();
+ -->

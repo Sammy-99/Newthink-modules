@@ -1,0 +1,13 @@
+In this module 'Bluethink_CustomCommand' we created the custom console CLI command.
+
+In this module we created a command just for testing and for this command we created two arguments to reflect the different data.
+
+The command is 'Sudo php bin/magento custom:demo'. 
+	->And the argument is - 1) name 
+				 2) desc(description)
+				 
+Command with 'name' argument is - "sudo php bin/magento custom:demo --name='your Name'";
+	->command shows some text with your name.
+	
+Command with 'desc' argument is - "sudo php bin/magento custom:demo --desc='desc'";
+	->command shows description of the command.   

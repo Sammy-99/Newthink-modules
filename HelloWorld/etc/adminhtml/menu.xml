@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Bluethink_HelloWorld::testing" title="Testing" module="Bluethink_HelloWorld" sortOrder="2" resource="Bluethink_HelloWorld::post"/>
+
+        <!-- start menu node: First node -->
+        <add id="Bluethink_HelloWorld::post" title="Form" module="Bluethink_HelloWorld" sortOrder="1" action="uiform/customer/edit" resource="Bluethink_HelloWorld::post" parent="Bluethink_HelloWorld::testing"/>
+
+        <!-- <add id="Bluethink_HelloWorld::hello_configuration" title="Configuration" module="Bluethink_HelloWorld" sortOrder="99" parent="Bluethink_HelloWorld::testing" action="adminhtml/system_config/edit/section/helloworld" resource="Bluethink_HelloWorld::helloworld_configuration"/> -->
+    </menu>
+</config>

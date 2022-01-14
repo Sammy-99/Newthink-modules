@@ -1,0 +1,61 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+   <system>
+       <tab id="bluethink_tab" translate="label" sortOrder="1">
+           <label>Bluethink Tab</label>
+       </tab>
+       <section id="bluethink" translate="label" type="text" sortOrder="100" showInDefault="1"
+                showInWebsite="1" showInStore="1">
+           <label>Bluethink Development</label>
+           <tab>bluethink_tab</tab>
+           <resource>Bluethink_Development::config</resource>
+           
+           <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1"
+                  showInStore="1">
+               <label>Csv File</label>
+               <field id="bluethink_dev_enabled" translate="label" type="select" showInDefault="1" canRestore="1"
+                      showInWebsite="1" showInStore="1">
+                   <label>Download File Status</label>
+                   <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+               </field>
+           </group>
+           <group id="button_visibility" translate="label" type="text" sortOrder="10" showInDefault="1"
+                  showInWebsite="1" showInStore="1">
+              <label>Country</label>
+              <field id="customer_grid_page" translate="label" type="multiselect" showInDefault="1" canRestore="1"
+                      showInWebsite="1" showInStore="1">
+                   <label>Country List</label>
+                   <source_model>Magento\Directory\Model\Config\Source\Country</source_model>
+               </field>
+              </group>
+
+             <group id="datepicker1" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Date Picker</label>
+                <field id="startdate" translate="label" type="date" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Start Date</label>
+                    <frontend_model>Bluethink\Development\Block\Adminhtml\Startdate</frontend_model>
+                </field>
+
+                <field id="enddate" translate="label" type="date" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>End Date</label>
+                <frontend_model>Bluethink\Development\Block\Adminhtml\Startdate</frontend_model>
+                 </field>
+
+            </group>
+        </section>
+   </system>
+</config>
+
+
+
+
+     <!--   <group id="demo" translate="label" type="text" sortOrder="10" showInDefault="1"
+                  showInWebsite="1" showInStore="1">
+              <label>Shipping Method</label>
+              <field id="customer_edit_page" translate="label" type="select" showInDefault="1" 
+                      showInWebsite="1" showInStore="1">
+                   <label>Shipping Method List</label>
+                   <source_model>Bluethink\Development\Model\Config\Source\Custom</source_model>
+               </field>
+              </group>
+ -->

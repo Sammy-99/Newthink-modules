@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <referenceContainer name="product.info.main">
+        <block class="Magento\Catalog\Block\Product\View\Description" name="product.info.printed_text" template="product/view/attribute.phtml" after="product.info.add_to_wishlist">
+            <arguments>
+                <argument name="at_call" xsi:type="string">getPrintedText</argument>
+                <argument name="at_code" xsi:type="string">printed_text</argument>
+                <argument name="css_class" xsi:type="string">printed_text</argument>
+                <argument name="at_label" xsi:type="string">Printed Text</argument>
+                <argument name="add_attribute" xsi:type="string">itemprop="printed_text"</argument>
+            </arguments>
+        </block>
+    </referenceContainer>
+</page>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+    <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>          
+        <referenceContainer name="left">
+            <referenceBlock name="sales_order_tabs">
+                <action method="addTab">
+                <argument name="name" xsi:type="string">custom_tabs</argument>
+                <argument name="block" xsi:type="string">Bluethink\Development\Block\Adminhtml\Order\View\Tab\Custom</argument>
+                </action>
+            </referenceBlock>
+        </referenceContainer>
+    </body>
+</page>
+    
+   <!--  <body>
+    <referenceContainer name="content">
+        <block class="Magento\Catalog\Block\Product\View\Description" name="product.info.customtab" template="product/view/attribute.phtml" before="product.info.main">
+            <arguments>
+                <argument name="at_call" xsi:type="string">getCustomTab</argument>
+                <argument name="at_code" xsi:type="string">custom_tab</argument>
+                <argument name="css_class" xsi:type="string">custom-tab</argument>
+                <argument name="at_label" xsi:type="string">Custom Tab</argument>
+            </arguments>
+        </block>
+    </referenceContainer>
+</body>
+ -->

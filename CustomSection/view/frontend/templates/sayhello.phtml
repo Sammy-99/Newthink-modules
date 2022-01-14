@@ -1,0 +1,37 @@
+<?php
+
+/**
+ * @var \Bluethink\CustomSection\Block\Display $block
+ */
+// echo $block->sayHello();
+
+// echo '<br>';
+
+// echo $this->helper('Bluethink\CustomSection\Helper\Data')->getConfig('mage/customConfig/paymentmethod');
+
+/**
+ * for newsletter subscription form 
+ */
+
+echo $block->getChildHtml("form.subscribe");
+
+?>
+
+<div class="content">
+        <form class="form subscribe" novalidate="novalidate" action="http://127.0.0.1/mage2.3/custom/index/subscrib/" method="post" id="newsletter-validate-detail">
+            <div class="field newsletter">
+                <div class="control">
+                    <label for="newsletter">
+                        <span class="label" style="margin: 1rem">Sign Up for Our Newsletter:</span>
+                        
+                        <input name="email" type="email" id="newsletter" placeholder="Enter your email address" data-validate="{required:true, 'validate-email':true}">
+                    </label>
+                </div>
+            </div>
+            <div class="actions" style="margin-top: 3rem"> 
+                <button class="action subscribe primary sr-only" title="Subscribe" type="submit" aria-label="Subscribe">
+                    <span>Subscribe</span>
+                </button>
+            </div>
+        </form>
+</div>
