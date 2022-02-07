@@ -1,0 +1,24 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Checkout\Block\Checkout\LayoutProcessor">
+        <plugin name="add_custom_field_checkout_shipping_form" type="Bluethink\CustomCheckoutField\Plugin\Checkout\LayoutProcessorPlugin" sortOrder="10"/>
+    </type>
+    <type name="Magento\Checkout\Model\ShippingInformationManagement">
+        <plugin name="save_custom_field_to_quote_table" type="Bluethink\CustomCheckoutField\Plugin\Checkout\Model\ShippingInformationManagement" sortOrder="1" />
+    </type>
+
+    <type name="Magento\Customer\Block\Account\Dashboard\Address">
+        <plugin name="update_product_before_save" type="Bluethink\CustomCheckoutField\Plugin\Account\Dashboard\AddressPlugin" sortOrder="1" disabled="true"/>
+    </type>
+
+    <type name="Magento\Sales\Block\Order\Info">
+        <plugin name="update_product_before_save_first" type="Bluethink\CustomCheckoutField\Plugin\Order\Info" sortOrder="1" disabled="false"/>
+    </type>
+
+    <type name="Magento\Customer\Block\Address\Book">
+        <plugin name="update_product_before_save_second" type="Bluethink\CustomCheckoutField\Plugin\Address\Book" sortOrder="1" disabled="true"/>
+    </type>
+
+    <type name="Magento\Sales\Block\Adminhtml\Order\View\Info">
+        <plugin name="update_product_on_admin_save" type="Bluethink\CustomCheckoutField\Plugin\Adminhtml\Order\Info" sortOrder="1" disabled="false"/>
+    </type>
+</config>

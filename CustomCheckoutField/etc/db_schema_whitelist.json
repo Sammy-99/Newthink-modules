@@ -1,0 +1,12 @@
+{
+    "quote": {
+        "column": {
+            "alternate_telephone": true
+        }
+    },
+    "sales_order": {
+        "column": {
+            "alternate_telephone": true
+        }
+    }
+}
