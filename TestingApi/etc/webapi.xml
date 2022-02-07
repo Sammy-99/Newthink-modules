@@ -6,10 +6,10 @@
     <route url="/V1/testapi/custom/me" method="GET">
         <service class="Newthink\TestingApi\Api\TestApiManagementInterface" method="getApiData"/>
         <resources>
-            <resource ref="self"/>
+            <resource ref="anonymous"/>
         </resources>
-        <data>
+        <!-- <data>
             <parameter name="id" force="true">%customer_id%</parameter>
-        </data>
+        </data> -->
     </route>
 </routes>

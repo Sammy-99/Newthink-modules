@@ -44,9 +44,9 @@
         <plugin name="update_product_before_save" type="Newthink\Di\Plugin\UpdateProductPlugin" sortOrder="1" disabled="false"/>
     </type> -->
 
-    <type name="Newthink\Di\Controller\Example\Index">
+    <!-- <type name="Newthink\Di\Controller\Example\Index">
         <plugin name="update_titles_before_after_save" type="Newthink\Di\Plugin\Testing" sortOrder="10" disabled="false"/>
         <plugin name="update_titles_classtwo_before_after_save" type="Newthink\Di\Plugin\TestingTwo" sortOrder="20" disabled="false"/>
-    </type>
+    </type> -->
  
 </config>

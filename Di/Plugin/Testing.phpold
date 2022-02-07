@@ -18,6 +18,13 @@ class Testing
             return $title;
     }
 
+    public function beforeGetTitle(\Newthink\Di\Controller\Example\Index $subject, $result)
+    {
+            echo "itsBeforeGetTitle() <br>";
+            $result = "Hello".$result;
+            return $result;
+    }
+
     public function afterGetTitle(\Newthink\Di\Controller\Example\Index $subject, $result)
     {
             echo "afterGetTitle() <br>";
