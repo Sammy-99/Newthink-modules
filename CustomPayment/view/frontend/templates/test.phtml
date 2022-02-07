@@ -1,0 +1,77 @@
+<h1>Confirmation Page</h1>
+
+
+<label for="">OrderId : </label> 
+<?php $orderObj = $block->getOrderId()->getLastRealOrder();
+      echo $orderObj->getEntityId()."<br>"; ?>
+<label for="">Total Amount : </label> 
+      <?=$orderObj->getGrandTotal()."<br>"; ?>
+<label for="">Customer Name : </label> 
+<?=$orderObj->getCustomerFirstName()." ".$orderObj->getCustomerLastName();
+   
+?>
+<br><br>
+<form id="form">
+  <input type="radio" id="auth" name="auth" value="1"> 
+  <label for="auth">Go For Order</label><br>
+
+  <input type="radio" id="notAuth" name="auth" value="0">
+  <label for="notAuth">Cancel Order</label><br>
+  <div id="msg"></div><br>
+  <input type="submit" id="submit" name="submit">
+
+</form>
+
+<script>
+require(['jquery'],function($){
+    $(document).ready(function() {
+
+        $(document).on('click','#submit', function(e){
+            e.preventDefault();
+            
+            var baseUrl = "<?=$block->getBaseUrl()?>";
+            var authentication = $("input[name='auth']:checked", "#form").val();
+            var radioValue = false;
+            var userAuth = document.getElementsByName("auth");
+            for(i=0; i<userAuth.length; i++){
+                if(userAuth[i].checked){
+                    radioValue = true;
+                }
+            }
+            if(radioValue){
+                $("#msg").text("");
+               
+                if(authentication == 1){
+                    Url = baseUrl + "custompayment/custom/success" ;
+                }
+                if(authentication == 0){
+                    Url = baseUrl + "custompayment/custom/cancel"
+                }
+                
+                $.ajax({
+                    url: Url,
+                    type: "POST",
+                    data: {"data":"test"},
+                    dataType: "json",
+                    success: function(response){
+                        
+                        console.log(response);
+                        
+                        if(response == 1){
+                            window.location.href = baseUrl + "checkout/onepage/success";
+                        }
+                        if(response == 0){
+                            window.location.href = baseUrl + "checkout/cart";
+                        }
+                        
+                    }
+                });
+
+            }else{
+                
+                $("#msg").text("please select any one");
+            }
+        });          
+    });
+});
+</script>

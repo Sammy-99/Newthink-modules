@@ -1,5 +1,11 @@
 <?php
+<<<<<<< HEAD
 namespace Bluethink\HelloWorld\Controller\Index;
+=======
+
+namespace Newthink\HelloWorld\Controller\Index;
+
+>>>>>>> 88b16565aa1e403ac404772eefd28b1bf3987a31
 
 class Test extends \Magento\Framework\App\Action\Action
 {
@@ -18,4 +24,8 @@ class Test extends \Magento\Framework\App\Action\Action
 		echo "Hello World";
 		exit;
 	}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 88b16565aa1e403ac404772eefd28b1bf3987a31

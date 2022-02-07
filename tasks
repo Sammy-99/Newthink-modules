@@ -1,0 +1,9 @@
+Tasks are -
+
+1) how to create Controlers, blocks, models, helper, vies and how they all works.
+2)how to override core classes using observers, preferences, plugins and template files .
+3)creating tables using of InstallSchema, UpgradeSchema, and db_schema and create extension attribute and eav attribute.
+4)how to create custom CMS block and use in our custom phtml file.
+5)create custom navigation link on frontend and customise them.
+6)how to reflect special offer messege for the specific product and show quantity bases msg on product details page if quantity less than 5.
+7)how to make cart price rule for the users and create custom input field using uicomponent.

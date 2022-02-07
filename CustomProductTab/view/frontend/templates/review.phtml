@@ -1,0 +1,18 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+    $helper = $this->helper('Newthink\CustomProductTab\Helper\Data');
+    //print_r($helper->getDateDifference());die("sdhfsgdhsd");
+?>
+<?php if($helper->getStockStatus()['is_in_stock'] == 1): ?>
+<div><h3 style="color:green;"><?="Special Offer, Only ". $helper->getDateDifference() . " days left !";?></h3></div>
+<?php endif; ?>
+<?php /** @var $block \Magento\Catalog\Block\Product\AbstractProduct */ ?>
+<?= $block->getReviewsSummaryHtml($block->getProduct(), false, true) ?>

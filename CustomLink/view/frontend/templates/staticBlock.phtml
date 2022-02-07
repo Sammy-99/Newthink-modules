@@ -1,0 +1,9 @@
+<?php
+
+echo $this->getLayout()
+->createBlock('Magento\Cms\Block\Block')
+->setBlockId('CustomStaticBlock')
+->toHtml();
+?>
+<h1><?=$block->getCustom()?></h1>
+<h1><?=$block->getHelperData()?></h1>

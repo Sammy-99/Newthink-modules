@@ -1,0 +1,67 @@
+<?php
+namespace Newthink\HelloWorld\Observer;
+use Magento\Framework\Event\Observer as EventObserver;
+use Magento\Framework\Event\ObserverInterface;
+class CustomereditPost implements ObserverInterface
+
+    {
+        protected $_request;
+        protected $_layout;
+        protected $_objectManager = null;
+        protected $_customerGroup;
+        private $logger;
+        protected $_customerRepositoryInterface;
+
+    /**
+    * @param \Magento\Framework\ObjectManagerInterface $objectManager
+    */
+    public function __construct(
+        \Magento\Framework\View\Element\Context $context,
+        \Magento\Framework\ObjectManagerInterface $objectManager,
+        \Psr\Log\LoggerInterface $logger,
+        \Magento\Customer\Api\CustomerRepositoryInterface $customerRepositoryInterface
+    ){
+        $this->_layout = $context->getLayout();
+        $this->_request = $context->getRequest();
+        $this->_objectManager = $objectManager;
+        $this->logger = $logger;
+        $this->_customerRepositoryInterface = $customerRepositoryInterface;
+    }
+
+    /**
+    * @param \Magento\Framework\Event\Observer $observer
+    * @return void
+    */
+    public function execute(EventObserver $observer)
+    {
+        $this->logger->info(' --jafar123--  ');
+        $myformdata = $this->_request->getParams();
+        
+        $event = $observer->getEvent();
+        $customer = $observer->getCustomerDataObject();
+        $customer->getId();
+        $customer->getFirstName();
+       // $customer->setCustomAttribute('username','aaaaaaaaaaa');
+
+        $customer_id = $customer->getId();
+
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$customerRepository = $objectManager->create('Magento\Customer\Api\CustomerRepositoryInterface');
+$customers = $customerRepository->getById($customer_id);
+
+$customers->setCustomAttribute("username",'aaaaaaaaaaaa');
+$customerRepository->save($customers);
+        //print_r(get_class_methods($))
+        //$customer->save();
+        
+        // echo "<pre>";
+        // print_r(get_class_methods($customer));
+        // // print_r($customer->getFirstName());
+        // die("sssssssss");
+        
+        // $customerData = $this->_customerRepositoryInterface->getById($customerId);
+        // $customerData->setUsername('jaf');
+        // $customerData->save();
+        return $this;
+    }
+}

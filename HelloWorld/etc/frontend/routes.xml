@@ -1,8 +1,13 @@
 <?xml version="1.0" ?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
     <router id="standard">
+<<<<<<< HEAD
         <route frontName="helloworld" id="helloworld">
             <module name="Bluethink_HelloWorld"/>
+=======
+        <route frontName="newthink" id="newthink">
+            <module name="Newthink_HelloWorld"/>
+>>>>>>> 88b16565aa1e403ac404772eefd28b1bf3987a31
         </route>
     </router>
 </config>
